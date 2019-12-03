@@ -1,5 +1,6 @@
 package com.example.globalmathgame;
 
+import android.app.IntentService;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,12 +10,23 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
-public class DelayedMessageService extends AppCompatActivity {
+public class DelayedMessageService extends IntentService {
+    public static final String EXTRA_MESSAGE = "message";
     public static final int NOTIFICATION_ID = 5453;
     public static final String NOTIFICATION_CHANNEL_ID = DelayedMessageService.class.getSimpleName();
 
+    public DelayedMessageService() {
+        super("DelayedMessageService");
+    }
+
+    @Override
+    protected void onHandleIntent(Intent intent) {
+        String text = intent.getStringExtra(EXTRA_MESSAGE);
+        showText(text);
+    }
+
     private void showText(final String text) {
-        Intent actionIntent = new Intent(this, JavaMainActivity.class);
+        Intent actionIntent = new Intent(this, MainActivity.class);
 
         PendingIntent actionPendingIntent = PendingIntent.getActivity(
                 this,
@@ -23,7 +35,7 @@ public class DelayedMessageService extends AppCompatActivity {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(android.R.drawable.sym_def_app_icon)
-                .setContentTitle("Wow")
+                .setContentTitle(getString(R.string.java_math_game))
                 .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVibrate(new long[] {0, 1000})

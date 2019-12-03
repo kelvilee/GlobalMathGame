@@ -2,5 +2,8 @@
     <string name="app_name">GlobalMathGame</string>
     <string name="java_math_game">Java Math Game</string>
     <string name="kotlin_math_game">Kotlin Math Game</string>
-    <string name="score">Score</string>
+    <string name="reset">Reset</string>
+    <string name="score">Score:</string>
+    <string name="wrong">Wrong :(</string>
+    <string name="correct">Correct!</string>
 </resources>

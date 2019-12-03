@@ -1,16 +1,12 @@
 package com.example.globalmathgame;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 import java.util.Random;
 
@@ -18,13 +14,14 @@ public class JavaMainActivity extends AppCompatActivity implements View.OnClickL
 
     TextView txtQuestion;
     TextView txtCorrect;
+    TextView txtCorrectStatus;
     Button btnAns1;
     Button btnAns2;
     Button btnAns3;
+    Button btnReset;
     int answer;
     int qCount;
     int correct;
-    public static final String NOTIFICATION_CHANNEL_ID = "channel_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,22 +30,15 @@ public class JavaMainActivity extends AppCompatActivity implements View.OnClickL
 
         txtQuestion = findViewById(R.id.txtQuestion);
         txtCorrect = findViewById(R.id.txtCorrect);
+        txtCorrectStatus = findViewById(R.id.txtCorrectStatus);
         btnAns1 = findViewById(R.id.btnAns1);
         btnAns2 = findViewById(R.id.btnAns2);
         btnAns3 = findViewById(R.id.btnAns3);
+        btnReset = findViewById(R.id.btnReset);
         btnAns1.setOnClickListener(this);
         btnAns2.setOnClickListener(this);
         btnAns3.setOnClickListener(this);
-
-//        NotificationManager nm =
-//        Notification.Builder builder = new Notifp[ication.Builder(this, NOTIFICATION_CHANNEL_ID);
-
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher_background)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!");
-//                        .setContentIntent(pendingIntent); //Required on Gingerbread and below
+        btnReset.setOnClickListener(this);
 
         answer = generateQuestion(); // initial question
         String strAns = String.valueOf(answer);
@@ -62,24 +52,45 @@ public class JavaMainActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnAns1:
                 if (answer == Integer.parseInt(btnAns1.getText().toString())) {
                     ++correct;
+                    txtCorrectStatus.setText(R.string.correct);
+                } else {
+                    txtCorrectStatus.setText(R.string.wrong);
                 }
                 break;
             case R.id.btnAns2:
                 if (answer == Integer.parseInt(btnAns2.getText().toString())) {
                     ++correct;
+                    txtCorrectStatus.setText(R.string.correct);
+                } else {
+                    txtCorrectStatus.setText(R.string.wrong);
                 }
                 break;
             case R.id.btnAns3:
                 if (answer == Integer.parseInt(btnAns3.getText().toString())) {
                     ++correct;
+                    txtCorrectStatus.setText(R.string.correct);
+                } else {
+                    txtCorrectStatus.setText(R.string.wrong);
                 }
                 break;
+            case R.id.btnReset:
+                txtCorrectStatus.setText("");
+                qCount = -1;
+                correct = 0;
+                break;
         }
-        if (qCount >= 4) {
+        ++qCount;
+        if (qCount == 5) {
             // android notification
+            txtCorrect.setText(String.valueOf(correct));
+            ++qCount;
+            Intent intent = new Intent(this, DelayedMessageService.class);
+            intent.putExtra(DelayedMessageService.EXTRA_MESSAGE, "Your score is " + correct + "/5");
+            startService(intent);
+        } else if (qCount > 5) {
+            // don't do anything past 5Q
         } else {
             // next set of questions
-            ++qCount;
             txtCorrect.setText(String.valueOf(correct));
             answer = generateQuestion(); // initial question
             String strAns = String.valueOf(answer);
