@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KotlinMainActivity">
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="50dp"
+        android:textSize="64sp" />
+
+    <Button
+        android:id="@+id/btnAns1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtQuestion"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/btnAns2" />
+
+    <Button
+        android:id="@+id/btnAns2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtQuestion"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp" />
+
+    <Button
+        android:id="@+id/btnAns3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtQuestion"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/btnAns2" />
+
+    <TextView
+        android:id="@+id/txtCorrectStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAns2"
+        android:layout_centerInParent="true"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCorrectStatus"
+        android:layout_toEndOf="@+id/txtScoreLabel"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCorrectStatus"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="10dp"
+        android:text="@string/score"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCorrect"
+        android:layout_centerInParent="true"
+        android:text="@string/reset" />
+</RelativeLayout>

@@ -9,10 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".KotlinMainActivity"
+            android:theme="@style/KotlinTheme"
+            android:label="@string/kotlin_math_game">
+        </activity>
+
         <service
             android:name=".DelayedMessageService"
-            android:exported="false"></service>
-        <activity android:name=".JavaMainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".JavaMainActivity"
             android:label="@string/java_math_game">
         </activity>
         <activity android:name=".MainActivity">

@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="KotlinTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/kotlinPrimary</item>
+        <item name="colorPrimaryDark">@color/kotlinPrimaryDark</item>
+        <item name="colorAccent">@color/kotlinAccent</item>
+        <item name="colorButtonNormal">@color/kotlinPrimaryDark</item>
+        <item name="android:textAppearanceButton">@style/TextAppearance.AppCompat.Button.Custom</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Button.Custom">
+        <item name="android:textColor">@color/kotlinAccent</item>
+    </style>
+
 </resources>

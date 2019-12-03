@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         btnKotlin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(this, KotlinMainActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), KotlinMainActivity.class);
+                startActivity(intent);
             }
         });
 
