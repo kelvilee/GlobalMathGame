@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">GlobalMathGame</string>
+    <string name="java_math_game">Java Math Game</string>
+    <string name="kotlin_math_game">Kotlin Math Game</string>
+    <string name="score">Score</string>
+</resources>
