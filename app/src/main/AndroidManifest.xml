@@ -12,7 +12,9 @@
         <service
             android:name=".DelayedMessageService"
             android:exported="false"></service>
-        <activity android:name=".JavaMainActivity"></activity>
+        <activity android:name=".JavaMainActivity"
+            android:label="@string/java_math_game">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

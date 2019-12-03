@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Globale Jeu De Maths</string>
+    <string name="java_math_game">Java Jeu De Maths</string>
+    <string name="kotlin_math_game">Kotlin Jeu De Maths</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="score">But:</string>
+    <string name="wrong">Faux :(</string>
+    <string name="correct">Correcte!</string>
+</resources>
